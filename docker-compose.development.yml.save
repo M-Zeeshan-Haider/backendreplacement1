@@ -1,0 +1,36 @@
+ersion: '2'
+services:
+  contract_observer:
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+
+  etherdelta_observer:
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+
+  huey_consumer:
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+
+  ticker:
+    restart: on-failure
+    volumes:
+      - .:/usr/src/app
+
+  websocket_server:
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+  
+  postgres:
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+=  
+
+volumes:
+  postgres-data:
